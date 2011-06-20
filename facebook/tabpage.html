@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.init({appId: '', status: true, cookie: true, xfbml: true});
+            window.setTimeout(function() {
+                FB.Canvas.setAutoResize();
+            }, 250);
+        };
+        (function() {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        }());
+    </script>
+    <div id="container"></div>
+</body>
+</html>
+
