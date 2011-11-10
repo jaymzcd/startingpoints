@@ -24,7 +24,8 @@ class CherryStart(object):
         pass
 
     def index(self, lang=None, country=None, sku=None):
-        tmpl = env.get_template('templates/index.html')
+        context = dict()
+        tmpl = env.get_template('index.html')
         return tmpl.render(context)
     index.exposed = True
 
