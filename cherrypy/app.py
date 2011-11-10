@@ -14,7 +14,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(PROJECT_PATH)
 DBPATH = os.path.join(PROJECT_PATH, 'entries.db')
 
-env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates_flat')))
+env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates')))
 
 class CherryStart(object):
 
@@ -24,7 +24,7 @@ class CherryStart(object):
         pass
 
     def index(self, lang=None, country=None, sku=None):
-        tmpl = env.get_template('content_grid.html')
+        tmpl = env.get_template('templates/index.html')
         return tmpl.render(context)
     index.exposed = True
 
@@ -50,7 +50,7 @@ conf = {
 }
 
 if __name__=='__main__':
-    cherrypy.server.socket_host = '127.0.0.1'
+    cherrypy.server.socket_host = '0.0.0.0'
     cherrypy.quickstart(CherryStart(), config=conf)
 
 application = cherrypy.Application(CherryStart(), script_name=None, config=conf)
