@@ -23,7 +23,7 @@ class CherryStart(object):
     def __init__(self):
         pass
 
-    def index(self, lang=None, country=None, sku=None):
+    def index(self):
         context = dict()
         tmpl = env.get_template('index.html')
         return tmpl.render(context)
