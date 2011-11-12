@@ -1,0 +1,48 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en-us" dir="ltr" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en-us" dir="ltr" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-us" dir="ltr" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-us" dir="ltr" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-us" dir="ltr" class="no-js"> <!--<![endif]-->
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="author" content="U-DOX">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="/media/css/styles.css">
+
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script defer src="/media/js/script.js"></script>
+
+    {% block analytics %}
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '{% block GA_CODE %}{% endblock %}']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+    {% endblock %}
+
+    {% block facebook_meta %}
+        <meta property="og:title" content="{% block fb_title %}{% endblock %}" />
+        <meta property="og:description" content="{% block fb_description %}{% endblock %}" />
+        <meta property="og:image" content="{% block fb_image %}{% endblock %}" />
+    {% endblock %}
+
+</head>
+<body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+    {% block page_header %}{% endblock %}
+    <div id="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% block page_footer %}{% endblock %}
+</body>
+</html>
