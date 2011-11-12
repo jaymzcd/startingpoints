@@ -12,11 +12,15 @@
     <meta name="author" content="U-DOX">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css">
-    <link rel="stylesheet" href="/media/css/styles.css">
+    {% block css %}
+        <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css">
+        <link rel="stylesheet" href="/media/css/styles.css">
+    {% endblock %}
 
-    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-    <script defer src="/media/js/script.js"></script>
+    {% block js %}
+        <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script defer src="/media/js/script.js"></script>
+    {% endblock %}
 
     {% block analytics %}
         <script type="text/javascript">
@@ -39,10 +43,10 @@
 
 </head>
 <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
-    {% block page_header %}{% endblock %}
     <div id="container">
-        {% block content %}{% endblock %}
+        {% block page_header %}{% endblock %}
+        <div id="page_content">{% block content %}{% endblock %}</div>
+        {% block page_footer %}{% endblock %}
     </div>
-    {% block page_footer %}{% endblock %}
 </body>
 </html>
