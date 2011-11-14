@@ -23,11 +23,11 @@ class CherryStart(object):
     def __init__(self):
         pass
 
+    @cherrypy.expose
     def index(self):
         context = dict()
         tmpl = env.get_template('index.html')
         return tmpl.render(context)
-    index.exposed = True
 
 
 STATICDIR = PROJECT_PATH
@@ -41,6 +41,7 @@ except ImportError:
 conf = {
     '/': {
         'tools.encode.on': True,
+        'tools.encode.encoding' : 'utf-8',
         'tools.gzip.on': True,
     },
     '/media': {
