@@ -14,10 +14,11 @@
 
     {% block css %}
         <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css">
-        <link rel="stylesheet" href="/media/css/styles.css">
+        <link rel="stylesheet/less" type="text/css" href="/media/css/styles.less">
     {% endblock %}
 
     {% block js %}
+        <script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
         <script defer src="/media/js/script.js"></script>
     {% endblock %}
