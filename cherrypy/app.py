@@ -11,8 +11,15 @@ import sys
 from jinja2 import Template, Environment, FileSystemLoader
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
-sys.path.append(PROJECT_PATH)
 DBPATH = os.path.join(PROJECT_PATH, 'entries.db')
+STATICDIR = PROJECT_PATH
+
+sys.path.append(PROJECT_PATH)
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
 env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates')))
 
@@ -28,15 +35,6 @@ class CherryStart(object):
         context = dict()
         tmpl = env.get_template('index.html')
         return tmpl.render(context)
-
-
-STATICDIR = PROJECT_PATH
-
-try:
-    from local_settings import *
-except ImportError:
-    pass
-
 
 conf = {
     '/': {
