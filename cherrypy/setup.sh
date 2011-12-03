@@ -19,4 +19,10 @@ cp html/master.html $1/templates/master.html;
 cp html/cherrypy_index.html $1/templates/index.html;
 
 cd $1;
+git init;
+git add .;
+git add -f $1/session_data/.gitignore;
+git add -f $1/media/uploads/.gitignore;
+git commit -am "initial commit";
+
 echo "Go code!";
