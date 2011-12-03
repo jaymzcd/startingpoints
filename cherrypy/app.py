@@ -23,6 +23,7 @@ except ImportError:
     pass
 
 env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates')))
+env.globals['url'] = cherrypy.url
 
 class CherryStart(object):
 
