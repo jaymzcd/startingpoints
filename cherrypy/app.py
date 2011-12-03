@@ -12,6 +12,7 @@ from jinja2 import Template, Environment, FileSystemLoader
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DBPATH = os.path.join(PROJECT_PATH, 'entries.db')
+SESSION_FILE_PATH = os.path.join(PROJECT_PATH, 'session_data/')
 STATICDIR = PROJECT_PATH
 
 sys.path.append(PROJECT_PATH)
@@ -25,7 +26,11 @@ env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates'
 
 class CherryStart(object):
 
-    _cp_config = {'tools.sessions.on': True}
+    _cp_config = {'tools.sessions.on': True,
+        'tools.sessions.timeout': 60*24,
+        'tools.sessions.storage_type': "file",
+        'tools.sessions.storage_path': SESSION_FILE_PATH,
+    }
 
     def __init__(self):
         pass

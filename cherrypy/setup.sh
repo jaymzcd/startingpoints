@@ -5,6 +5,7 @@ mkdir $1/media/css;
 mkdir $1/media/js;
 mkdir $1/templates;
 mkdir $1/assets;
+mkdir $1/session_data;
 touch $1/README.md
 
 touch $1/media/css/styles.css;
