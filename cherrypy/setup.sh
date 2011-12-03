@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir /var/www/$1;
+
 mkdir $1/media;
 mkdir $1/media/css;
 mkdir $1/media/js;
