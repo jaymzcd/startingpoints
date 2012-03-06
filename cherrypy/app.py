@@ -1,14 +1,14 @@
 #!/usr/bin/env python2
 
-import urllib
 import cherrypy
+import json
+import os
 import re
 import sqlite3
-import os
-import json
 import sys
+import urllib
 
-from jinja2 import Template, Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DBPATH = os.path.join(PROJECT_PATH, 'entries.db')
@@ -25,10 +25,11 @@ except ImportError:
 env = Environment(loader=FileSystemLoader(os.path.join(PROJECT_PATH, 'templates')))
 env.globals['url'] = cherrypy.url
 
+
 class Root(object):
 
     _cp_config = {'tools.sessions.on': True,
-        'tools.sessions.timeout': 60*24,
+        'tools.sessions.timeout': 60 * 24,
         'tools.sessions.storage_type': "file",
         'tools.sessions.storage_path': SESSION_FILE_PATH,
     }
@@ -45,7 +46,7 @@ class Root(object):
 conf = {
     '/': {
         'tools.encode.on': True,
-        'tools.encode.encoding' : 'utf-8',
+        'tools.encode.encoding': 'utf-8',
         'tools.gzip.on': True,
     },
     '/media': {
@@ -58,7 +59,7 @@ conf = {
 # for mod_wsgi
 application = cherrypy.Application(Root(), script_name=None, config=conf)
 
-if __name__=='__main__':
+if __name__ == '__main__':
 
     wsgi_debug = bool(os.environ.get('WSGI_DEBUG', False))
     if wsgi_debug:
