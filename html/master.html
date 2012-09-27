@@ -5,7 +5,7 @@
 <!--[if IE 9 ]>    <html lang="en-us" dir="ltr" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-us" dir="ltr"> <!--<![endif]-->
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Nissan Leaf Dashboard{% endblock %}</title>
 
     <meta charset="utf-8">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
@@ -13,18 +13,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block css %}
-        <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css">
         <link rel="stylesheet/less" type="text/css" href="/media/css/styles.less">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     {% endblock %}
 
     {% block js %}
-        <script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.min.js"></script>
+        <script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.0.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
         <script defer src="/media/js/script.js"></script>
     {% endblock %}
 
     {% block analytics %}
-        <script type="text/javascript">
+        <script>
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', '{% block GA_CODE %}{% endblock %}']);
           _gaq.push(['_trackPageview']);
@@ -42,12 +45,18 @@
         <meta property="og:image" content="{% block fb_image %}{% endblock %}" />
     {% endblock %}
 
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
 </head>
 <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
-    <div id="container">
-        {% block page_header %}{% endblock %}
-        <div id="page_content">{% block content %}{% endblock %}</div>
-        {% block page_footer %}{% endblock %}
+    <div class="container">
+        {% block page_header %}
+            {% include "blocks/header.html" %}
+        {% endblock %}
+        {% block content %}{% endblock %}
+        {% block page_footer %}
+            {% include "blocks/footer.html" %}
+        {% endblock %}
     </div>
 </body>
 </html>
