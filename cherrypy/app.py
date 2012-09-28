@@ -1,14 +1,10 @@
 #!/usr/bin/env python2
 
 import cherrypy
-import json
 import os
-import re
-import sqlite3
 import sys
-import urllib
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DBPATH = os.path.join(PROJECT_PATH, 'entries.db')
@@ -35,7 +31,33 @@ class Root(object):
     }
 
     def __init__(self):
-        pass
+        self.MEDIA_URL = '/media/'
+
+    @property
+    def _context(self):
+        return dict(
+            MEDIA_URL=self.MEDIA_URL,
+            content=None,
+            page=None,
+        )
+
+    @cherrypy.expose
+    def default(self, *args, **kwargs):
+        context = self._context
+
+        try:
+            context = dict(page=args[0])
+        except IndexError:
+            pass
+
+        context.update(**kwargs)
+
+        try:
+            tmpl = env.get_template('%s.html' % args[0])
+        except (IndexError, TemplateNotFound):
+            raise cherrypy.NotFound()
+
+        return tmpl.render(context)
 
     @cherrypy.expose
     def index(self):
