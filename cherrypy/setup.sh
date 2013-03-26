@@ -21,7 +21,7 @@ touch $prefix$1/templates/blocks/footer.html;
 touch $prefix$1/templates/blocks/header.html;
 
 cp cherrypy/app.py $prefix$1;
-cp html/master.html $prefix$1/templates/master.html;
+cp html/boostrap_cdn.html $prefix$1/templates/master.html;
 cp html/cherrypy_index.html $prefix$1/templates/index.html;
 
 cd $prefix$1;
