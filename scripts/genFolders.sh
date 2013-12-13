@@ -11,9 +11,3 @@ mkdir $BASE/public/media/img;
 mkdir $BASE/assets;
 mkdir $BASE/assets/sql;
 mkdir $BASE/assets/flat;
-
-
-
-
-
-
